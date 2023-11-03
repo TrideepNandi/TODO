@@ -1,0 +1,26 @@
+{% extends "base.html" %} 
+{% load static %}
+
+{% block title %} 
+My Blog 
+{% endblock %} 
+
+{% block css_files %}
+  <link rel="stylesheet" href="{% static "blog/post.css" %}" />
+  <link rel="stylesheet" href="{% static "blog/index.css" %}" />
+{% endblock %}
+
+{% block content %}
+<section id="about">
+  <form method="POST">
+    {% csrf_token %}
+  <input type="text" name="username" required>
+<label for="">UserName</label>
+<br>
+<input type="password" name="password" required>
+<label for="password">Password</label>
+<br>
+<button class="btn" type="submit">Login</button>
+  </form>
+</section>
+{% endblock %}

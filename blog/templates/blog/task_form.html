@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Task</title>
+</head>
+<body>
+    <h1>Create Task</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>{{form.title.label_tag}}
+        {{form.title}}
+        </div>
+        <div>
+        {{ form.excerpt.label_tag}}
+        {{ form.excerpt}}
+        </div>
+        <div>
+            {{ form.image.label_tag}}
+            {{ form.image}}
+        </div>
+        <div>
+            {{ form.due_date.label_tag}}
+            {{ form.due_date}}
+        </div>
+        <div>
+            {{form.content.label_tag}}
+            {{form.content}}
+        </div>
+        <div>
+            {{form.priority.label_tag}}
+            {{form.priority}}
+        </div>
+        <button type="submit">Create Task</button>
+    </form>
+</body>
+</html>

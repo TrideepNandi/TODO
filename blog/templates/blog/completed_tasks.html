@@ -1,0 +1,33 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %} 
+{{ post.title }}
+{% endblock %} 
+
+{% block css_files %} 
+<link rel="stylesheet" href="{% static "blog/post.css" %}" />
+  <link rel="stylesheet" href="{% static "blog/all-posts.css" %}" />
+{% endblock %} 
+
+{% block content %}
+<section id="all-posts">
+    <h1>Completed Tasks</h1>
+
+  <ul class="post-list">
+    {% for task in completed_tasks %}
+      <li>
+        <article class="post">
+          <a href="{% url 'post-detail-page' task.slug %}">
+            <img src="{{ task.image.url }}" alt="{{ task.title }}" />
+            <div class="post__content">
+              <h3>{{ task.title }}</h3>
+              <p>{{ task.excerpt }}</p>
+            </div>
+          </a>
+        </article>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}

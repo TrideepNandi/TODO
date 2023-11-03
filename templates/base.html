@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="{% static "app.css" %}">
+  {% block css_files %}{% endblock %}
+</head>
+<body>
+  <header id="main-navigation">
+    <h1> {% if user.is_authenticated %}
+      <a class="active" href="{% url "starting-page" %}"> {{user.username}}</a>
+      <a class="active" href="/logout/"> | Logout</a>
+      <a class="active" href="{% url "create_task" %}"> | Create Task</a>
+      <label for=""></label>
+      {% else %}
+      <a class="active" href="/login/">Login | Register</a>
+      {% endif %}
+    </h1>
+    <nav>
+      <a class="active" href="{% url 'completed-tasks' %}">Completed Tasks</a>
+      <a href="{% url "posts-page" %}">| All Posts</a>
+    </nav>
+  </header>
+
+  {% block content %}
+  {% endblock %}
+</body>
+</html>
